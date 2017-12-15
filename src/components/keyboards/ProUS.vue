@@ -87,7 +87,8 @@
         <div class="keycap">}<br/>]</div>
       </div>
       <div class="k8 f_key" :class="{pressed:keyPressed('delete', 'backspace')}">
-        <div class="keycap">Delete<span class="side">BS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>Clear</em></span></div>
+        <div v-if="bsIsDelete" class="keycap">BS<span class="side">Del &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>Clear</em></span></div>
+        <div v-else class="keycap">Delete<span class="side">BS &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>Clear</em></span></div>
       </div>
       <div class="k17 f_key" :class="{pressed:keyPressed('controlleft')}">
         <div class="keycap">Control</div>
@@ -170,19 +171,34 @@
   </div>
     <div id="addition_wrap">
       <div id="addition">
-        <div class="k18 left f_key" :class="{pressed:keyPressed('altleft')}">
+        <div v-if="swapMetaAlt" class="k18 left f_key" :class="{pressed:keyPressed('metaleft')}">
+          <div class="keycap"><span class="top">⌘</span><span class="bottom">◇</span></div>
+        </div>
+        <div v-else class="k18 left f_key" :class="{pressed:keyPressed('altleft')}">
           <div class="keycap"><span class="top">Opt</span><span class="bottom">Alt</span></div>
         </div>
-        <div class="k224 k91 left f_key" :class="{pressed:keyPressed('metaleft')}">
+        <div v-if="leftMetaIsFn" class="k224 k91 left f_key" :class="{pressed:keyPressed('fn')}">
+          <div class="keycap">Fn</div>
+        </div>
+        <div v-else-if="swapMetaAlt" class="k224 k91 left f_key" :class="{pressed:keyPressed('altleft')}">
+          <div class="keycap"><span class="top">Opt</span><span class="bottom">Alt</span></div>
+        </div>
+        <div v-else class="k224 k91 left f_key" :class="{pressed:keyPressed('metaleft')}">
           <div class="keycap"><span class="top">⌘</span><span class="bottom">◇</span></div>
         </div>
         <div class="k32 key" :class="{pressed:keyPressed(' ')}">
           <div class="keycap"></div>
         </div>
-        <div class="k224 k93 right f_key" :class="{pressed:keyPressed('metaright')}">
+        <div v-if="swapMetaAlt" class="kk224 k93 right f_key" :class="{pressed:keyPressed('altright')}">
+          <div class="keycap"><span class="top">Opt</span><span class="bottom">Alt</span><span class="side">Stop</span></div>
+        </div>
+        <div v-else class="k224 k93 right f_key" :class="{pressed:keyPressed('metaright')}">
           <div class="keycap"><span class="top">⌘</span><span class="bottom">◇</span><span class="side">Stop</span></div>
         </div>
-        <div class="k18 right f_key" :class="{pressed:keyPressed('altright')}">
+        <div v-if="swapMetaAlt" class="k18 right f_key" :class="{pressed:keyPressed('metaright')}">
+          <div class="keycap"><span class="top">⌘</span><span class="bottom">◇</span></div>
+        </div>
+        <div v-else class="k18 right f_key" :class="{pressed:keyPressed('altright')}">
           <div class="keycap"><span class="top">Opt</span><span class="bottom">Alt</span></div>
         </div>
       </div>
@@ -193,8 +209,14 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'ProUS',
+  computed: mapState({
+    bsIsDelete: state => state.keySettings.bsIsDelete,
+    leftMetaIsFn: state => state.keySettings.leftMetaIsFn,
+    swapMetaAlt: state => state.keySettings.swapMetaAlt
+  }),
   methods: {
     keyPressed (...keys) {
       return keys.some(k => this.$store.getters.pressedKeys.includes(k))
@@ -227,7 +249,7 @@ $text: #555
 #keyboad_wrap
   width: 890px
   margin: 0 auto
-  padding: 100px 30px 30px
+  padding: 8px 30px 30px
   font-family: 'Average Sans', sans-serif
   color: $text
   text-shadow: 0 0 1px rgba(0,0,0,0.1)

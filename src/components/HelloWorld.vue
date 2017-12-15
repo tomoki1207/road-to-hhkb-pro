@@ -1,16 +1,19 @@
 <template>
   <div class="hello">
     <textarea @keyup="dispatchKeyup" @keydown="dispatchKeydown" @keydown.tab="ignore" />
+    <toggle-switches />
     <pro-us />
   </div>
 </template>
 
 <script>
 import ProUS from './keyboards/ProUS'
+import ToggleSwitches from './keyboards/toggleSwitch'
 export default {
   name: 'HelloWorld',
   components: {
-    'pro-us': ProUS
+    'pro-us': ProUS,
+    'toggle-switches': ToggleSwitches
   },
   data () {
     return {

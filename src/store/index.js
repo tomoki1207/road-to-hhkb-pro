@@ -13,7 +13,12 @@ const detectKey = keyboardEvent => {
 }
 
 const state = {
-  pressedKeySet: new Set()
+  pressedKeySet: new Set(),
+  keySettings: {
+    bsIsDelete: false,
+    leftMetaIsFn: false,
+    swapMetaAlt: false
+  }
 }
 
 const mutations = {
@@ -26,6 +31,15 @@ const mutations = {
     const keys = [detectKey(keyboardEvent)]
     const pressed = Array.from(state.pressedKeySet.values()).filter(k => !keys.includes(k))
     state.pressedKeySet = new Set(pressed)
+  },
+  bsIsDelete (state, bsIsDel) {
+    state.keySettings.bsIsDelete = bsIsDel
+  },
+  leftMetaIsFn (state, metaIsFn) {
+    state.keySettings.leftMetaIsFn = metaIsFn
+  },
+  swapMetaAlt (state, swap) {
+    state.keySettings.swapMetaAlt = swap
   }
 }
 

@@ -171,13 +171,16 @@
   </div>
     <div id="addition_wrap">
       <div id="addition">
-        <div v-if="swapMetaAlt" class="k18 left f_key" :class="{pressed:keyPressed('metaleft')}">
+        <div v-if="(swapMetaAlt && leftMetaIsFn)" class="k18 left f_key" :class="{pressed:keyPressed('fn')}">
+          <div class="keycap">Fn</div>
+        </div>
+        <div v-else-if="swapMetaAlt" class="k18 left f_key" :class="{pressed:keyPressed('metaleft')}">
           <div class="keycap"><span class="top">⌘</span><span class="bottom">◇</span></div>
         </div>
         <div v-else class="k18 left f_key" :class="{pressed:keyPressed('altleft')}">
           <div class="keycap"><span class="top">Opt</span><span class="bottom">Alt</span></div>
         </div>
-        <div v-if="leftMetaIsFn" class="k224 k91 left f_key" :class="{pressed:keyPressed('fn')}">
+        <div v-if="(leftMetaIsFn && !swapMetaAlt)" class="k224 k91 left f_key" :class="{pressed:keyPressed('fn')}">
           <div class="keycap">Fn</div>
         </div>
         <div v-else-if="swapMetaAlt" class="k224 k91 left f_key" :class="{pressed:keyPressed('altleft')}">
@@ -203,8 +206,9 @@
         </div>
       </div>
     </div>
-    </div>
-    <p id="update">From <a href="https://codepen.io/P233">Peiwen Lu's</a> CSS/HTML pen <a href=" https://codepen.io/P233/details/qEagi">https://codepen.io/P233/details/qEagi</a>.</p>
+  </div>
+  <p>*Can't detect the <kbd>Fn</kbd> key...*</p>
+  <p id="update">The original source of style is <a href="https://codepen.io/P233">Peiwen Lu's</a> CSS/HTML pen <a href=" https://codepen.io/P233/details/qEagi">https://codepen.io/P233/details/qEagi</a>.</p>
 </div>
 </template>
 

@@ -52,8 +52,9 @@ export default {
 .switch {
   position: relative;
   display: inline-block;
-  width: 160px;
-  height: 34px;
+  width: 150px;
+  height: 24px;
+  font-size: 0.8rem;
 }
 
 /* Hide default HTML checkbox */
@@ -76,10 +77,10 @@ export default {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
+  height: 20px;
+  width: 20px;
+  left: 2px;
+  bottom: 2px;
   background-color: white;
   -webkit-transition: .4s;
   transition: .4s;

@@ -23,9 +23,9 @@ export default {
   data () {
     return {
       editor: null,
-      rawLang: 'javascript',
+      rawLang: 'text',
       rawTheme: 'chrome',
-      modes: ['html', 'javascript', 'css', 'csharp', 'golang', 'java', 'markdown', 'python', 'ruby', 'swift', 'typescript'],
+      modes: ['text', 'html', 'javascript', 'css', 'csharp', 'golang', 'java', 'markdown', 'python', 'ruby', 'swift', 'typescript'],
       themes: ['chrome', 'monokai', 'github'],
       rawContent: ''
     }
@@ -58,6 +58,9 @@ export default {
     editor.getSession().setMode(`ace/mode/${lang}`)
     editor.setTheme(`ace/theme/${theme}`)
     editor.setValue(vm.content, 1)
+    editor.setOptions({
+      maxLines: 12
+    })
   },
   computed: {
     content: {
@@ -94,9 +97,9 @@ export default {
 </script>
 <style>
 .ace_editor {
-  width: 100%;
-  height: 300px;
+  min-height: 200px;
   text-align: left;
-  margin-bottom: 30px;
+  margin: 2px 30px 5px 30px;
+  border: 1px solid #ccc;
 }
 </style>

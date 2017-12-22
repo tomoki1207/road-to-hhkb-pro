@@ -208,7 +208,7 @@
     </div>
   </div>
   <p>*Can't detect the <kbd>Fn</kbd> key...*</p>
-  <p id="update">The original source of style is <a href="https://codepen.io/P233">Peiwen Lu's</a> CSS/HTML pen <a href=" https://codepen.io/P233/details/qEagi">https://codepen.io/P233/details/qEagi</a>.</p>
+  <p>The original source of style is <a href="https://codepen.io/P233">Peiwen Lu's</a> CSS/HTML pen <a href=" https://codepen.io/P233/details/qEagi">https://codepen.io/P233/details/qEagi</a>.</p>
 </div>
 </template>
 
@@ -250,10 +250,13 @@ $text: #555
 
 @import url(https://fonts.googleapis.com/css?family=Average+Sans)
 
+p
+  font-size: 12px
+  margin: 5px 0
+
 #keyboad_wrap
   width: 890px
   margin: 0 auto
-  padding: 8px 30px 30px
   font-family: 'Average Sans', sans-serif
   color: $text
   text-shadow: 0 0 1px rgba(0,0,0,0.1)
@@ -273,6 +276,9 @@ $text: #555
   -webkit-transform: rotateX(15deg)
   -ms-transform: rotateX(15deg)
   -o-transform: rotateX(15deg)
+  transform: scale(0.9)
+  margin-top: -15px
+  margin-bottom: -20px
 
 #main_area
   padding: 2px

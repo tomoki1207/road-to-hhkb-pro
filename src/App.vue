@@ -21,4 +21,7 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+h2 {
+  margin: 5px;
+}
 </style>

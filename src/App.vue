@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h2>Load to HHKB Professional</h2>
+      <h2>Road to HHKB Professional</h2>
     </header>
     <router-view/>
   </div>
